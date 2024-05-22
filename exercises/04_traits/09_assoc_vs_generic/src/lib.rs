@@ -11,7 +11,37 @@
 // "Little book of Rust macros" (https://veykril.github.io/tlborm/) if you're
 // interested in learning more about it.
 // You don't have to though: it's perfectly okay to write three separate
-// implementations manually. Venture further only if you're curious.
+// implementations manually. Venture further only if you're curious.\
+
+trait Power<T> {
+    type Target;
+    fn power(self, n: T) -> Self::Target;
+}
+
+impl Power<u32> for u32 {
+    type Target = u32;
+
+    fn power(self: u32, n: u32) -> u32 {
+        self.pow(n)
+    }
+}
+
+impl Power<u16> for u32 {
+    type Target = u32;
+
+    fn power(self: u32, n: u16) -> u32 {
+        self.pow(u32::from(n))
+    }
+}
+
+impl Power<&u32> for u32 {
+    type Target = u32;
+
+    fn power(self: u32, n: &u32) -> u32 {
+        self.pow(*n)
+    }
+}
+
 
 #[cfg(test)]
 mod tests {
