@@ -3,10 +3,16 @@
 //   a `String` field into each variant.
 //   You'll also have to add `thiserror` as a dependency in the `Cargo.toml` file.
 
+
+#[derive(thiserror::Error, Debug)]
 enum TicketNewError {
+    #[error("{0}")]
     TitleCannotBeEmpty,
+    #[error("{0}")]
     TitleTooLong,
+    #[error("{0}")]
     DescriptionCannotBeEmpty,
+    #[error("{0}")]
     DescriptionTooLong,
 }
 
