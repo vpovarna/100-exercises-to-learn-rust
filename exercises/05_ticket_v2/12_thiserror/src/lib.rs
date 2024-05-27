@@ -6,13 +6,13 @@
 
 #[derive(thiserror::Error, Debug)]
 enum TicketNewError {
-    #[error("{0}")]
+    #[error("Title cannot be empty")]
     TitleCannotBeEmpty,
-    #[error("{0}")]
+    #[error("Title cannot be longer than 50 characters")]
     TitleTooLong,
-    #[error("{0}")]
+    #[error("Description cannot be empty")]
     DescriptionCannotBeEmpty,
-    #[error("{0}")]
+    #[error("Description cannot be longer than 500 characters")]
     DescriptionTooLong,
 }
 
